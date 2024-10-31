@@ -8,12 +8,12 @@ services:
     volumes:
       - server-local-data:/tmp/server-local-data
       - docker-data:/tmp/docker-data
-    command: "bash -c 'chown -R 1000:1000 /tmp/server-local-data && chown -R 1000:1000 /tmp/docker-data'"
+    command: bash -c "chown -R 1000:1000 /tmp/server-local-data && chown -R 1000:1000 /tmp/docker-data"
 
   server:
     image: twentycrm/twenty:${TAG}
     volumes:
-      - server-local-data:/app/packages/twenty-server/${STORAGE_LOCAL_PATH}
+      - server-local-data:/app/packages/twenty-server/.local-storage
       - docker-data:/app/docker-data
     ports:
       - "3000:3000"
